@@ -26,7 +26,8 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import NewModuleButton from './NewModuleButton';
+import CalendarModuleButton from './CalendarModuleButton';
+import NativeCameraXButton from './NativeCameraXButton';
 import RTNCalculator from "rtn-calculator/js/NativeCalculator";
 import RTNCenteredText from "rtn-centered-text/js/RTNCenteredTextNativeComponent";
 
@@ -98,7 +99,8 @@ function App(): React.JSX.Element {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <NewModuleButton />
+          <CalendarModuleButton />
+          <NativeCameraXButton />
           <Section title="Step One">
             Edit <Text style={styles.highlight}>App.tsx</Text> to change this
             screen and then come back to see your edits.

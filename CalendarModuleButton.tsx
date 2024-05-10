@@ -3,7 +3,7 @@ import { NativeModules, Button } from 'react-native';
 
 const { CalendarModule } = NativeModules;
 
-const NewModuleButton = () => {
+const CalendarModuleButton = () => {
     const onPress = () => {
         console.log('We will invoke the native module here!');
         CalendarModule.createCalendarEvent(`testName`, `testLocation`);
@@ -18,4 +18,4 @@ const NewModuleButton = () => {
     );
 };
 
-export default NewModuleButton;
+export default CalendarModuleButton;
