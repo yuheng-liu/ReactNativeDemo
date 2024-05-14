@@ -4,9 +4,14 @@ import { NativeModules, Button } from 'react-native';
 const { CameraModule } = NativeModules;
 
 const NewModuleButton = () => {
-    const onPress = () => {
+    const onPress = async () => {
         console.log('Starting Native CameraX Module');
-        CameraModule.startCameraActivity(`testName`, `testLocation`);
+        try {
+            const imageUri = await CameraModule.startCameraActivity();
+            console.log(`Received CameraX image Uri: ${imageUri}`);
+        } catch (e) {
+            console.error(e);
+        }
     };
 
     return (

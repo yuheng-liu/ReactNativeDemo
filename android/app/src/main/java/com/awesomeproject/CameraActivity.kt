@@ -1,7 +1,9 @@
 package com.awesomeproject
 
 import android.Manifest
+import android.app.Activity
 import android.content.ContentValues
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.icu.text.SimpleDateFormat
 import android.os.Build
@@ -69,8 +71,7 @@ class CameraActivity : AppCompatActivity() {
             contentValues
         ).build()
 
-        // Set up image capture listener, which is triggered after photo has
-        // been taken
+        // Set up image capture listener, which is triggered after photo has been taken
         imageCapture.takePicture(
             outputOptions,
             ContextCompat.getMainExecutor(this),
@@ -81,8 +82,13 @@ class CameraActivity : AppCompatActivity() {
                 override fun onImageSaved(output: ImageCapture.OutputFileResults){
                     val msg = "Photo capture succeeded: ${output.savedUri}"
                     Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-                    Log.d(TAG, msg)
-                    binding.imageView.setImageURI(output.savedUri)
+//                    binding.imageView.setImageURI(output.savedUri)
+
+                    // return the result to CameraModule
+                    val returnIntent = Intent()
+                    returnIntent.putExtra("imageUri", output.savedUri.toString())
+                    setResult(Activity.RESULT_OK, returnIntent)
+                    finish()
                 }
             }
         )
